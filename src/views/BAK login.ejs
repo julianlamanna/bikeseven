@@ -6,11 +6,7 @@
 
     <main class="panelDeIngreso">
         <section>
-            <% if(locals.loggedUser != undefined) { %>
-                <h6>Bienvenido Hola</h6>
-            <% } else { %>
-                <h2>Panel de Ingreso</h2>
-            <% }  %>
+            <h2>Panel de Ingreso</h2>
         </section>
 
         <section class="form">
@@ -33,6 +29,12 @@
                         <button type="submit" class="btn btn-primary">INGRESAR</button>
                     </div>
                 </div>
+
+                <% if (typeof errors != 'undefined') { %>
+                    <% for (let i = 0; i < errors.length; i++) %>
+                    <%= errors[i].msg %>
+                    <% } %>    
+                <% } %>
             </form>
         </section>
 

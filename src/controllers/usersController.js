@@ -14,11 +14,12 @@ module.exports = {
     save: function(req, res) {
         let errors = validationResult(req);
         
+        // El registro, ¿llegó con errores? Preguntamos con el IF
         if( errors.isEmpty() ) {
             // no hay errores. Vamos por acá...
             let nuevoUsuario = {
                 name: req.body.name,
-                /*apellido: req.body.apellido,*/
+                lastname: req.body.lastname,
                 email: req.body.email,
                 avatar: req.file.filename,
                 password: bcryptjs.hashSync(req.body.password, 12)
@@ -29,50 +30,45 @@ module.exports = {
             
         } else {
             // hay errores. Entonces...
-            // res.send( validationResult(req).mapped() )
-            return res.render('register', {
-                errors: errors.mapped()
-            })
+            //return console.log(errors);
+            return res.render('register', { errors: errors.mapped() })
         }
     },  
 
-    login: function(req, res) {
-        res.render('login');
-    },
-
     welcome: function(req, res) {
         //res.send("Tu usuario ha sido creado con éxito");
-        res.send(req.query); // recupero los datos que se enviaron a traves del metodo get
+        return res.send(req.query); // recupero los datos que se enviaron a traves del metodo get
     },   
 
     delete: function(req, res) {
-        res.send("Se borró un usuario");
+        return res.send("Se borró un usuario");
     },
     
+    login: function(req, res) {
+        return res.render('login');
+    },    
     checkLogin: function(req, res) {
-        //return res.send(req.body)
-        let emailUsuario = req.body.email;
-        let passUsuario = req.body.password;
-
-        for(let i = 0; i < usuarios.length; i++){
-            if(emailUsuario == usuarios[i].email){
-                if(bcryptjs.compareSync(passUsuario, usuarios[i].password) ){
-                    // res.send("Bienvenido")
-                    
-                    // CREAMOS SESION DE USUARIOS
+        let emailUsuario = req.body.email; 
+        let passUsuario = req.body.password; 
+        
+        for(let i = 0; i < usuarios.length; i++) {
+            // chequea toda la tabla
+            if(emailUsuario == usuarios[i].email) {
+                 
+                // compara la password hasheada
+                 if ( bcryptjs.compareSync(passUsuario, usuarios[i].password) ) {
                     req.session.datosUsuario = {
-                        email: usuarios[i].email,
                         name: usuarios[i].name,
-                        avatar: usuarios[i].avatar
-                    }
+                        email: usuarios[i].email,
+                        avatar: usuarios[i].avatar 
+                    }; 
+                    let usuarioLogueado = req.session;
+                    res.redirect('/users/login');
+                    //res.render('index', { title: 'prueba' });
                 } else {
-                    res.send("Los datos ingresados no son correctos")
-                }
-            } else {
-                res.send("Los datos ingresados no son correctos")
-            }
-        }
-
-        // res.send(usuarios) chequear la base de datos de usuarios
+                    return res.send("Los datos ingresados no son correctos")
+                } 
+            } 
+        } return res.send("No existe un usuario registrado con este email"); 
     }    
 }
