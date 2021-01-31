@@ -50,148 +50,22 @@
 
 
     <!-- GALERIA DE PRODUCTOS -->
-    <main class="galeria-de-productos-home">
-        <h2>Lorem Ipsum</h2>    
+    <main class="galeria-de-productos">
+        <h2>Hot Stuff</h2> 
         <section>
+        <% for(let i = 0; i < productos.length; i ++) { %>
             <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button onclick="location.href='detalle-de-producto.ejs'">comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>                
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-        </section>
-    </main> 
-    <main class="galeria-de-productos-home">
-        <h2>Lorem Ipsum</h2>    
-        <section>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>                
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-        </section>
-        <section>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>                
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-        </section>            
+                <img src="images/products/<%= productos[i].foto %>.jpg" alt="<%= productos[i].modelo %>">
+                <h3><%= productos[i].modelo %></h3>
+                <div>
+                    <a href="/products/detalleDeProducto" class="btn-buy">Comprar</a><a href="/products/detalleDeProducto" class="btn-view-more">Ver Más</a>
+                </div>
+                
+            </article>    
+        <% } %>  
+        </section>     
     </main>
-    <main class="galeria-de-productos-home">
-        <h2>Lorem Ipsum</h2>    
-        <section>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>                
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-        </section>
-    </main>
-    <main class="galeria-de-productos-home">
-        <h2>Lorem Ipsum</h2>    
-        <section>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>                
-            <article>
-                <img src="../images/products/fpo.jpg" alt="FPO" />
-                <h4>Lorem Ipsum</h4>
-                <p class="precio">precio</p>
-                <button>comprar</button>
-            </article>
-        </section>
-    </main>                        
+                       
 
     <!-- BLOG -->        
     <main class="blog">

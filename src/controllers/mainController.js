@@ -1,14 +1,24 @@
 const fs = require('fs');
 const path = require('path');
+let db = require('../database/models/index'); 
 
 // RUTA ------> CONTROLADOR -------> VISTA
 
 let mainController = {
+/*    index: function(req, res) {
+        res.render('index');
+    },  */
+
     index: function(req, res) {
-        res.render('index', { 
-            mensaje: "Bienvenidos a nuestra página...",
-        });
-    },
+        //db.sequelize.query('SELECT * FROM productos')
+        db.Productos.findAll()
+        .then(function(productos){
+                res.render('index',{
+                    productos:productos
+                });
+            }
+        )
+    },     
 
     contacto: function(req, res) {
         res.render('contacto');        

@@ -61,9 +61,6 @@ header{
     transform: rotateY(180deg);
 }
 
-.header-access-panel{
-  
-}
     .header-access-panel section{
         width: 100%;  
         display:flex;
@@ -103,6 +100,7 @@ header .header-access-panel{
     border-radius: 0 0 15px 15px;
     width: 280px;
     height: 100px;
+    padding-top: 10px;
 }
     header .header-access-panel a{
         color: white;
@@ -204,43 +202,52 @@ header .header-access-panel{
     .galeria-de-productos h2{
         width: 100%;
     }  
+    .galeria-de-productos h3{
+        font-size: 20px;
+        color: #383838;
+        text-align: center;
+        margin-bottom: 10px;
+        min-height: 50px;
+        text-transform: capitalize;
+    }        
     .galeria-de-productos h4{
         font-size: 18px;
     }      
     .galeria-de-productos section{
         display: block;
         flex-basis: 100%;
-        padding: 10px;
+        padding: 10px 0;
         text-align: center;
-    }  
-    .galeria-de-productos section img{
-        width: 100%;
-    }  
+    }    
+
     .galeria-de-productos section div{
         display: flex;
         flex-direction: row;
         justify-content: space-around; 
     }          
     @media only screen and (min-width: 640px){
-        .galeria-de-productos section{
-            flex-basis: 50%;
+        .galeria-de-productos section article{
+            width: 50%;
         }
     }
     @media only screen and (min-width: 960px){
-        .galeria-de-productos section{
-            flex-basis: 33%;
+        .galeria-de-productos section article{
+            width: 33%;
         }
     }
     @media only screen and (min-width: 1280px){
-        .galeria-de-productos section{
-            flex-basis: 25%;
+        .galeria-de-productos section article{
+            width: 24%;
         }
     }    
-
+    
     .galeria-de-productos section article{
-        width: 280px;
-        text-align: center;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-content: space-between;
+        flex-direction: column;
     }
+
     .galeria-de-productos section article img{
         width: 100%;
         height: auto;
@@ -255,12 +262,13 @@ header .header-access-panel{
     }            
     .galeria-de-productos a{
         font-size: 18px;
-        padding: 10px 30px;   
-        border-radius: 7px;
+        padding: 6px 12px;   
+        border-radius: 3px 10px;
         color: white;
-        background: grey;
+        background: #B1B3B6;
         /*margin-top: 20px;*/
         border: none; 
+        margin-bottom: 30px;
     } 
     .galeria-de-productos a:focus{
         border: none !important;
@@ -369,9 +377,6 @@ footer{
     flex-wrap:wrap;
 }
 
-.galeria-de-productos-home{
-
-}
     .galeria-de-productos-home section{
         display: flex;
         flex-direction: row;
