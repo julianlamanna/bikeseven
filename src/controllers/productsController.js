@@ -4,10 +4,6 @@ const { validationResult } = require('express-validator');
 let db = require('../database/models'); 
 
 module.exports = {
-    /*bicicletas: function(req, res) {
-        res.render('bicicletas', {products});        
-    },*/
-
     bicicletas: function(req, res) {
         //db.sequelize.query('SELECT * FROM productos')
         db.Productos.findAll()
@@ -17,27 +13,84 @@ module.exports = {
                 });
             }
         )
-    },         
-
-    detalleDeProducto: function(req, res) {
-        res.render('detalleDeProducto');        
-    },    
-
-    /*detalleDeProductoId: function ('/products/detalleDeProducto/:idProducto', function(req, res){ 
-        db.Pelicula.findByPk(req.params.id, {
-            include: [{association: 'detalleDeEsteProducto'}]
-        })
-        .then(function(unProducto) {
-            res.render('detalleDeProducto', {
-                unProducto: unProducto
+    },        
+    
+    detail: function(req, res) {
+        db.Productos.findByPk(req.params.id)
+        .then(function(producto) {
+            return res.render('detail', {
+                producto: producto
             })
-        })       
-    },  ADDED by Juls 31-1 */    
+        })
+    },    
 
     accesorios: function(req, res) {
         res.render('accesorios');        
     }, 
+
     create: function(req, res) {
         return res.render('createProduct'); 
+    },
+
+    save: function(req, res) {
+        // req.body
+        db.Productos.findOne({
+            where: {
+                title: req.body.title
+            }
+        })
+        .then(function(elProducto) {
+            if(elProducto == null) {
+                db.Movie.create({
+                    modelo: req.body.modelo,
+                    descripciondestacada: req.body.descripciondestacada,
+                    titulouno: req.body.titulouno
+                })
+                .then(function() {
+                    res.redirect('/')
+                })
+            } else {
+                res.send("Esta bicicleta ya existe")
+            }
+        })
+    },
+    
+    edit: function(req, res) {
+        db.Productos.findByPk(req.params.id)
+        .then(function(producto) {
+            res.render('productEdit', { producto : producto })
+        })
+    },
+    
+    update: function(req, res) {
+        db.Productos.update({
+            modelo: req.body.modelo,
+            colores: req.body.colores
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function(verQueOnda) {
+            res.redirect('/productEdit/'+ req.params.id)
+        })
+    },
+
+    delete: function(req, res) {
+        db.Productos.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function(quePaso) {
+            return res.send('Lo que me retorna es... ' + quePaso)
+        })
+        .catch(function(error) {
+            return res.send(error)
+        })
     }
+    
+    //async: function(req, res) {
+    //    return res.render('movieAsync')
+    //}    
 }

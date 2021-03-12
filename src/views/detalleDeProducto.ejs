@@ -6,11 +6,12 @@
     <%- include('partials/header') %> 
 
     <main class="detalle-de-productos">
-        <h2>Detalle de Producto</h2>
+        <h2><%= producto.modelo %></h2>
     </main>    
+
     <main class="detalle-de-productos">
         <section>
-            <img src="/images/products/detalle-de-producto.jpg" alt="Bicicleta"/>
+            <img src="/images/products/<%= producto.foto %>.jpg" alt="Bicicleta"/>
         </section>
         <section class="detalle-de-productos-corto">
             <div><a href="/index">Inicio</a> / XTC SRL 291</div>
@@ -106,6 +107,11 @@
             </section>        
         </main> 
     </div>   
+
+    <a style="cursor:pointer" href="/products/edit/<%= producto.id %>"><button>Editar</button></a>
+    <form action="/movies/delete/<%= producto.id %>?_method=DELETE" method="POST">
+        <button type="submit">Borrar</button>
+    </form>    
     
     <!-- FOOTER -->        
     <%- include('partials/footer') %>
