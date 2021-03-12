@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head', {title: "Productos"}) %>
+<body>
+    <!-- HEADER -->
+    <%- include('partials/header') %> 
+
+    <main class="detalle-de-">
+        <h2><%= producto.modelo %></h2>
+    </main>    
+
+    <main class="detalle-de-productos">
+        <section>
+            <img src="/images/products/<%= producto.foto %>.jpg" alt="Bicicleta"/>
+        </section>
+        <section class="detalle-de-productos-corto">
+            <div><a href="/index">Inicio</a> / <%= producto.modelo %></div>
+
+            <h3><%= producto.modelo %></h3>
+            <p><%= producto.descripcion_destacada %></p>
+
+            <div class="social-share">
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="<%= producto.instagram %>" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="<%= producto.facebook %>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <div class="dpc-cta">
+                <a href="/products/edit/<%= producto.id %>" class="btn btn-secondary">modificar</a>
+                <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST">
+                    <button type="deshabilitar" class="btn btn-secondary">Borrar</button>
+                </form>   
+
+                <a href="/carrito" class="btn btn-terciary">comprar</a>
+            </div>
+        </section>         
+    </main>
+
+    <main class="detalle-de-productos detalle-de-productos-description">
+        <section>
+            <h3>Detalles</h3>
+            <p><%= producto.descripcion_larga %></p>
+        </section>
+    </main>
+
+    <main class="detalle-de-productos detalle-de-productos-description">
+        <section>
+            <h3><%= producto.titulo_uno %></h3>
+            <p><%= producto.descripcion_uno %></p>
+        </section>
+        <section>
+            <h3><%= producto.titulo_dos %></h3>
+            <p><%= producto.descripcion_dos %></p>
+        </section>
+        <section>
+            <h3><%= producto.titulo_tres %></h3>
+            <p><%= producto.descripcion_tres %></p>
+        </section>
+    </main>    
+    
+    <div class="grey-bg">
+        <div><h3>Especificaciones</h3></div>
+        <main class="detalle-de-productos detalle-de-productos-tech">
+            <section>
+                <ul>
+                    <li>Talles</li>
+                    <li>Colores</li>
+                    <li>Cuadro</li>
+                    <li>Horquilla</li>
+                    <li>Shock</li>
+                    <li>Manubrio</li>
+                    <li>Portasilla</li>
+                    <li>Asiento</li>
+                    <li>Pedales</li>
+                    <li>Shifters</li>
+                    <li>Descarrilador</li>
+                    <li>Cambio Trasero</li>
+                    <li>Frenos</li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li><%= producto.talle %></li>
+                    <li><%= producto.colores %></li>
+                    <li><%= producto.cuadro %></li>
+                    <li><%= producto.horquilla %></li>
+                    <li><%= producto.shock %></li>
+                    <li><%= producto.manubrio %></li>
+                    <li><%= producto.portasilla %></li>
+                    <li><%= producto.asiento %></li>
+                    <li><%= producto.pedales %></li>
+                    <li><%= producto.shifters %></li>
+                    <li><%= producto.descarrilador %></li>
+                    <li><%= producto.cambio_trasero %></li>
+                    <li><%= producto.frenos %></li>
+                </ul>
+            </section>
+
+            <section>
+                <ul>
+                    <li>Manijas de Freno</li>
+                    <li>Piñón</li>
+                    <li>Cadena</li>
+                    <li>Plato - Palanca</li>
+                    <li>Caja Pedalera</li>
+                    <li>Llantas</li>
+                    <li>Mazas</li>
+                    <li>Rayos</li>
+                    <li>Cubiertas</li>
+                    <li>Peso</li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li><%= producto.manijas_freno %></li>
+                    <li><%= producto.pinon %></li>
+                    <li><%= producto.cadena %></li>
+                    <li><%= producto.plato_palanca %></li>
+                    <li><%= producto.caja_pedalera %></li>
+                    <li><%= producto.llantas %></li>
+                    <li><%= producto.mazas %></li>
+                    <li><%= producto.rayos %></li>
+                    <li><%= producto.cubiertas %></li>
+                    <li><%= producto.peso %></li>
+                </ul>
+            </section>        
+        </main> 
+    </div>    
+    
+    <!-- FOOTER -->        
+    <%- include('partials/footer') %>
+</body>
+</html>

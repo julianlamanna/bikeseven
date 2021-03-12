@@ -7,20 +7,32 @@
 
     <!-- GALERIA DE PRODUCTOS -->
     <main class="galeria-de-productos">
+        <a href="/bicicletas/create">Agregar una bicicleta</a>
         <h2>Nuestras bicicletas</h2> 
         <section>
-        <% for(let i = 0; i < productos.length; i ++) { %>
+        <% for( let i = 0; i < productos.length; i ++ ) { %>
             <article>
                 <img src="/images/products/<%= productos[i].foto %>.jpg" alt="<%= productos[i].modelo %>">
                 <h3><%= productos[i].modelo %></h3>
+                <!--<p><%= productos[i].foto %></p>
+                <p>AR $<%= productos[i].precio %>.-</p>
+                <p><%= productos[i].origen %></p>-->
+                <p>Año: <%= productos[i].coleccion %></p>
                 <div>
-                    <a href="/products/detalleDeProducto" class="btn-buy">Comprar</a><a href="/products/detalleDeProducto" class="btn-view-more">Ver Más</a>
+                    <a href="/carrito" class="btn-buy">Comprar</a>
+                    <a href="/products/detail/<%= productos[i].id %>" class="btn-view-more">Ver Más</a>
                 </div>
                 
             </article>    
         <% } %>  
         </section>     
     </main>    
+
+    <ul>
+        <% for( let i = 0; i < productos.count / 9; i++ ) { %>
+            <li><a href="?pagina=<%= i + 1%>"><%= i + 1 %></a></li>
+        <% } %>
+    </ul>    
     
     <!-- FOOTER -->        
     <%- include('partials/footer') %>
